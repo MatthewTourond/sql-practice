@@ -1,0 +1,16 @@
+SQL Zoo select within select
+
+#4
+select name, population from world where 
+  population > (select population from world where name like 'Canada') 
+  AND 
+  population <(select population from world where name like 'Poland')
+
+#5
+SELECT name, CONCAT(ROUND((population*100)/(SELECT population FROM world WHERE name='Germany'), 0), '%')
+  FROM world
+WHERE population IN (SELECT population
+  FROM world
+  WHERE continent='Europe')
+
+#6
