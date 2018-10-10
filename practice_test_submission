@@ -17,7 +17,12 @@ SELECT firstName, lastName, income FROM Customer
 #working on
 SELECT o.customerID, c.income, o.accNumber, a.branchNumber
   FROM Account a, Customer c, owns o, Branch b
-    WHERE (SELECT c.income FROM Customer c WHERE b.branchName='Latveria OR b.branchName='London')
+    WHERE o.customerID=a.customerID AND (SELECT c.income FROM Customer c WHERE b.branchName='Latveria OR b.branchName='London')
     ORDER BY accNumber
     
     (SELECT b.branchName FROM Branch b WHERE b.brankName
+
+5)
+SELECT o.customerID, a.type, o.accNumber, a.balance
+  FROM Account a, Owns o, 
+     WHERE a.type
