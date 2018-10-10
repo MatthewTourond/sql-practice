@@ -7,3 +7,6 @@ SELECT b.branchname, a.accNumber, a.balance
 FROM Account a, Branch b
 WHERE a.branchNumber=b.branchName AND a.balance>115000 AND b.budget > 2000000
 ORDER BY b.branchName. a.accNumber
+
+3)
+SELECT firstName, lastName, income FROM Customer
