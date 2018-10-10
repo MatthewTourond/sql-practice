@@ -4,9 +4,20 @@ SELECT firstName, lastName from Customer
   
 2)
 SELECT b.branchname, a.accNumber, a.balance 
-FROM Account a, Branch b
-WHERE a.branchNumber=b.branchName AND a.balance>115000 AND b.budget > 2000000
-ORDER BY b.branchName. a.accNumber
+  FROM Account a, Branch b
+    WHERE a.branchNumber=b.branchName AND a.balance>115000 AND b.budget > 2000000
+      ORDER BY b.branchName. a.accNumber
 
 3)
 SELECT firstName, lastName, income FROM Customer
+  WHERE income > ANY (SELECT 2*income FROM Customer WHERE firstName='CHARLES' AND lastName='SMITH')
+    ORDER BY lastName, firstName
+   
+4)
+#working on
+SELECT o.customerID, c.income, o.accNumber, a.branchNumber
+  FROM Account a, Customer c, owns o, Branch b
+    WHERE (SELECT c.income FROM Customer c WHERE b.branchName='Latveria OR b.branchName='London')
+    ORDER BY accNumber
+    
+    (SELECT b.branchName FROM Branch b WHERE b.brankName
