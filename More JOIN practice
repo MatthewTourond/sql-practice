@@ -34,3 +34,30 @@ Obtain the cast list for 'Casablanca'.
 TODO:Q7 ONWARD
 #7
 Obtain the cast list for the film 'Alien'
+
+SELECT actor.name FROM actor
+JOIN casting ON casting.actorid = actor.id
+JOIN movie ON casting.movieid = movie.id
+WHERE movie.title = 'Alien'
+
+#8
+List the films in which 'Harrison Ford' has appeared
+
+SELECT movie.title FROM movie
+JOIN casting ON movie.id = casting.movieid
+JOIN actor ON casting.actorid  = actor.id
+WHERE actor.name = 'Harrison Ford'
+
+#9
+List the films where 'Harrison Ford' has appeared - but not in the starring role. 
+
+SELECT DISTINCT(movie.title) FROM movie
+JOIN casting ON movie.id = casting.movieid
+JOIN actor ON casting.actorid = actor.id
+WHERE casting.ord != 1 AND actor.name='Harrison Ford'
+
+#10
+List the films together with the leading star for all 1962 films.
+
+
+#11
